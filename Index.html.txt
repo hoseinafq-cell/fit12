@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>مربی شخصی ۱۲ هفته‌ای</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#14161a;--card:#1e2126;--card2:#252930;--line:#323741;--txt:#f1f3f5;--mut:#aab0b9;--acc:#ff7a1a;--acc2:#b6f04a;--bad:#ff6b6b;--ok:#6ee7a0;--r:16px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:Vazirmatn,Tahoma,"Segoe UI",sans-serif;font-size:16px;line-height:1.8}
+a{color:var(--acc2)}
+header.top{position:sticky;top:0;z-index:10;background:#14161af0;backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.brand{padding:10px 16px 0;font-weight:800;font-size:18px}
+.brand b{color:var(--acc)}
+nav{display:flex;gap:6px;overflow-x:auto;padding:8px 12px 10px;scrollbar-width:thin}
+nav button{flex:0 0 auto;background:var(--card);color:var(--txt);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font:inherit;font-size:15px;cursor:pointer;transition:.2s}
+nav button[aria-selected=true]{background:var(--acc);color:#1a1000;border-color:var(--acc);font-weight:800}
+nav button:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--acc2);outline-offset:2px}
+main{max-width:1100px;margin:0 auto;padding:16px}
+.tab{display:none;animation:in .3s}.tab.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h2{font-size:24px;margin:8px 0 14px}h3{margin:0 0 6px;font-size:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;margin-bottom:14px;box-shadow:0 8px 24px #0004}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.kpi{background:var(--card2);border-radius:14px;padding:14px;border:1px solid var(--line)}
+.kpi .v{font-size:26px;font-weight:800;color:var(--acc2)}.kpi .l{color:var(--mut);font-size:14px}
+.mut{color:var(--mut);font-size:14px}
+.tag{display:inline-block;border-radius:8px;padding:0 8px;font-size:13px;margin-inline-start:6px}
+.tag.user{background:#1f3b2a;color:var(--ok)}.tag.est{background:#43301a;color:#ffc17a}
+.badge{display:inline-block;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:2px 10px;margin:2px;font-size:14px}
+.badge.hi{background:#43250c;border-color:var(--acc);color:#ffd2ad}
+button.btn,.btn{background:var(--acc);color:#1a1000;border:0;border-radius:12px;padding:10px 18px;font:inherit;font-weight:800;cursor:pointer;min-height:44px}
+button.btn.sec{background:var(--card2);color:var(--txt);border:1px solid var(--line)}
+button.btn.dng{background:var(--bad);color:#200}
+label{display:block;margin:10px 0 4px;font-size:15px}
+input,select,textarea{width:100%;background:#12141a;color:var(--txt);border:1px solid var(--line);border-radius:10px;padding:10px;font:inherit;min-height:44px}
+input[type=checkbox],input[type=radio]{width:auto;min-height:0;margin-inline-end:6px}
+input[type=range]{padding:0}
+.chk{display:inline-flex;align-items:center;margin:4px 8px 4px 0;background:var(--card2);padding:6px 12px;border-radius:10px}
+.form{display:grid;gap:0 14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.full{grid-column:1/-1}
+.ex{display:grid;gap:12px;grid-template-columns:1fr}
+@media(min-width:800px){.ex{grid-template-columns:320px 1fr}}
+.media{display:flex;gap:6px;background:#0e1013;border-radius:14px;overflow:hidden;min-height:150px;align-items:center;justify-content:center;flex-wrap:wrap}
+.media img{width:calc(50% - 3px);max-height:260px;object-fit:cover;border-radius:12px;background:#fff}
+.media svg{width:calc(50% - 6px);max-height:180px}
+.media .cap{width:100%;font-size:12px;color:var(--mut);padding:4px 8px}
+details{background:var(--card2);border-radius:12px;padding:8px 12px;margin:8px 0}
+summary{cursor:pointer;font-weight:600;min-height:32px}
+table{width:100%;border-collapse:collapse}
+td,th{padding:6px;border-bottom:1px solid var(--line);text-align:right;font-size:15px}
+.setrow{display:grid;grid-template-columns:34px 1fr 1fr 1fr;gap:6px;align-items:center;margin:4px 0}
+.setrow input{padding:6px;text-align:center}
+.warn{background:#3a1a1a;border:1px solid var(--bad);border-radius:12px;padding:10px 14px;margin:8px 0}
+.note{background:#2a2412;border:1px solid #6b5a1f;border-radius:12px;padding:10px 14px;margin:8px 0}
+.good{background:#13291d;border:1px solid #2b6b46;border-radius:12px;padding:10px 14px;margin:8px 0}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.chips button{background:var(--card2);color:var(--txt);border:1px solid var(--line);border-radius:12px;padding:8px 14px;font:inherit;cursor:pointer;min-height:44px}
+.chips button.on{background:var(--acc2);color:#102000;font-weight:800}
+.bar{height:10px;background:#12141a;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+svg text{font-family:inherit}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:10px}.photos img{width:100%;border-radius:12px;max-height:420px;object-fit:contain;background:#000}
+#printPlan{display:none}
+@media print{header.top,.tab,.noprint{display:none!important}#printPlan{display:block!important;color:#000}body{background:#fff;color:#000}#printPlan h3{color:#000}#printPlan td,#printPlan th{border-bottom:1px solid #999;color:#000}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+<div class="brand">مربی <b>۱۲ هفته</b> · هایپرتروفی و کاهش تدریجی چربی</div>
+<nav role="tablist" id="nav"></nav>
+</header>
+<main>
+<section class="tab" id="t-dash"></section>
+<section class="tab" id="t-plan"></section>
+<section class="tab" id="t-food"></section>
+<section class="tab" id="t-supp"></section>
+<section class="tab" id="t-prog"></section>
+<section class="tab" id="t-month"></section>
+<section class="tab" id="t-res"></section>
+<div id="printPlan"></div>
+</main>
+<script>
+"use strict";
+/* ===== ابزارها ===== */
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const fa=(n,d=1)=>(n===null||n===undefined||n===""||isNaN(n))?"—":Number(n).toLocaleString("fa-IR",{maximumFractionDigits:d});
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num=v=>{const n=parseFloat(String(v).replace(/[۰-۹]/g,d=>"۰۱۲۳۴۵۶۷۸۹".indexOf(d)));return isNaN(n)?null:n};
+const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
+const dayNum=s=>Math.floor(Date.parse(s+"T00:00:00Z")/864e5);
+const fdate=s=>{try{return new Date(s+"T12:00:00").toLocaleDateString("fa-IR")}catch(e){return s}};
+const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:null;
+const WD=["شنبه","یکشنبه","دوشنبه","سه‌شنبه","چهارشنبه","پنجشنبه","جمعه"];
+/* ===== وضعیت و ذخیره‌سازی ===== */
+const KEY="fit12_v1";
+const defState=()=>({q:{},dayMap:{A:0,B:1,C:3,D:4},start:null,sessions:{},daily:[],reviews:[],prefs:{extra:false,goal:-0.10}});
+let S=load();
+function load(){try{const r=JSON.parse(localStorage.getItem(KEY));return Object.assign(defState(),r||{})}catch(e){return defState()}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){alert("ذخیره‌سازی در مرورگر ممکن نشد (فضا یا حالت خصوصی).")}}
+/* ===== داده‌های تمرین ===== */
+const IMG="https://raw.githubusercontent.com/yuhonas/free-exercise-db/main/exercises/";
+const SRC="https://github.com/yuhonas/free-exercise-db";
+const E={
+bench:{fa:"پرس سینه با هالتر",en:"Barbell Bench Press",mus:"سینه، سرشانهٔ جلو، پشت‌بازو",sets:[3,3,3],extra:1,lo:6,hi:10,rest:"۲–۳ دقیقه",rir:["۳","۲","۱–۲"],load:"free",img:"Barbell_Bench_Press_-_Medium_Grip",kind:"press",chest:1,h:"کمر طبیعی روی نیمکت، کتف‌ها جمع و پایین، پاها محکم روی زمین. هالتر را کنترل‌شده تا پایین سینه بیاور و به‌سمت بالا هل بده. حتماً از همکار/ایمنی استفاده کن.",m:"پریدن هالتر از روی سینه، باز شدن بیش‌ازحد آرنج‌ها، بلند شدن باسن از نیمکت.",a:"پرس سینه دستگاه یا پرس دمبل"},
+incline:{fa:"پرس بالا سینه با دمبل",en:"Incline Dumbbell Press",mus:"بالای سینه، سرشانه، پشت‌بازو",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۲ دقیقه",rir:["۳","۲","۱–۲"],load:"free",img:"Incline_Dumbbell_Press",kind:"press",chest:1,h:"شیب نیمکت حدود ۳۰ تا ۴۵ درجه. دمبل‌ها را کنترل‌شده تا کشش راحت سینه پایین بیاور و بالا هل بده.",m:"شیب خیلی زیاد (تبدیل به پرس سرشانه)، پایین آوردن بی‌کنترل.",a:"پرس بالا سینه دستگاه"},
+mshoulder:{fa:"پرس سرشانه دستگاه",en:"Machine Shoulder Press",mus:"سرشانهٔ جلو و میانی، پشت‌بازو",sets:[3,3,3],extra:0,lo:8,hi:12,rest:"۲ دقیقه",rir:["۳","۲","۱–۲"],load:"machine",img:"Machine_Shoulder_(Military)_Press",kind:"press",chest:1,h:"صندلی را تنظیم کن تا دسته‌ها هم‌سطح شانه باشند. بدون قوس شدید کمر هل بده.",m:"قوس کمر، شانه‌ها بالا، حرکت ناقص.",a:"پرس سرشانه دمبل نشسته"},
+latraise:{fa:"نشر جانب دمبل",en:"Dumbbell Lateral Raise",mus:"سرشانهٔ میانی (اولویت ۲)",sets:[3,3,3],extra:1,lo:10,hi:20,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"free",img:"Side_Lateral_Raise",kind:"raise",h:"وزنهٔ سبک، آرنج کمی خم، دمبل را تا سطح شانه بالا ببر و آهسته پایین بیاور. بدن را تاب نده.",m:"تاب دادن بدن، بالا کشیدن شانه‌ها، وزنهٔ زیادی سنگین.",a:"نشر جانب کابل یا دستگاه"},
+cablefly:{fa:"کراس‌اوور کابل (فلای)",en:"Cable Crossover / Fly",mus:"سینه (کشش و انقباض)",sets:[3,3,3],extra:0,lo:10,hi:15,rest:"۹۰ ثانیه",rir:["۳","۲","۱–۲"],load:"cable",img:"Cable_Crossover",kind:"press",chest:1,h:"آرنج کمی خم و ثابت، دست‌ها را در قوسی جلوی سینه جمع کن و کنترل‌شده برگرد.",m:"تبدیل فلای به پرس، پرتاب وزنه، شانهٔ جلو افتاده.",a:"پک‌دک / دستگاه فلای"},
+pushdown:{fa:"زیربغل سیم‌کش طناب",en:"Triceps Rope Pushdown",mus:"پشت‌بازو",sets:[3,3,3],extra:1,lo:10,hi:15,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"cable",img:"Triceps_Pushdown_-_Rope_Attachment",kind:"curl",h:"آرنج‌ها کنار بدن ثابت؛ طناب را پایین بده و در پایین دست‌ها را کمی باز کن.",m:"حرکت دادن آرنج، خم شدن بیش‌ازحد تنه.",a:"پشت‌بازو با میلهٔ صاف"},
+latpd:{fa:"لت‌پول‌داون",en:"Lat Pulldown",mus:"لت‌ها (پهنای پشت)، دوسر",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۲ دقیقه",rir:["۳","۲","۱–۲"],load:"cable",img:"Wide-Grip_Lat_Pulldown",kind:"pull",h:"دستگیره کمی پهن‌تر از شانه. سینه را بالا نگه دار و آرنج‌ها را به‌سمت جیب‌ها پایین بکش.",m:"عقب‌خوابیدن زیاد، کشیدن با دست به‌جای پشت.",a:"لت‌پول با دستگیرهٔ نزدیک یا پول‌آپ کمکی"},
+row:{fa:"زیربغل سیم‌کش نشسته",en:"Seated Cable Row",mus:"میان‌پشت، لت‌ها، دوسر",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۲ دقیقه",rir:["۳","۲","۱–۲"],load:"cable",img:"Seated_Cable_Rows",kind:"pull",h:"ستون فقرات خنثی، کتف‌ها را جمع کن و آرنج را کنار بدن به عقب بکش.",m:"تاب‌دادن کمر، شانه‌ها بالا.",a:"روئینگ دستگاه با تکیه‌گاه سینه"},
+dbrow:{fa:"روئینگ دمبل با تکیه‌گاه سینه",en:"Chest-Supported Dumbbell Row",mus:"بالای پشت، لت‌ها",sets:[3,3,3],extra:0,lo:10,hi:14,rest:"۹۰ ثانیه",rir:["۳","۲","۱–۲"],load:"free",img:"Incline_Bench_Pull",kind:"pull",h:"روی نیمکت شیب‌دار با سینه تکیه بده؛ دمبل‌ها را به‌سمت کمر بکش و آهسته پایین بیاور.",m:"بلند کردن سینه از نیمکت، کشیدن با شانه.",a:"روئینگ دستگاه"},
+reardelt:{fa:"نشر خم / ری‌ردلت دستگاه",en:"Reverse Machine Fly (Rear Delt)",mus:"سرشانهٔ عقب، بالای پشت",sets:[3,3,3],extra:1,lo:12,hi:20,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"machine",img:"Reverse_Machine_Flyes",kind:"raise",h:"آرنج کمی خم، دسته‌ها را به‌سمت عقب باز کن بدون جمع کردن بیش‌ازحد کتف.",m:"وزنهٔ سنگین و کمک گرفتن از تنه.",a:"فیس‌پول سیم‌کش"},
+curl:{fa:"جلوبازو دمبل",en:"Dumbbell Biceps Curl",mus:"جلوبازو",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"free",img:"Dumbbell_Bicep_Curl",kind:"curl",h:"آرنج کنار بدن، بالا بیاور و آهسته (حدود ۲–۳ ثانیه) پایین ببر.",m:"تاب دادن بدن، حرکت آرنج به جلو.",a:"جلوبازو کابل"},
+hammer:{fa:"جلوبازو چکشی",en:"Hammer Curl",mus:"براکیالیس، ساعد، جلوبازو",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"free",img:"Hammer_Curls",kind:"curl",h:"کف دست‌ها رو به هم، آرنج ثابت، بدون تاب.",m:"استفاده از وزنهٔ بیش‌ازحد و تاب دادن.",a:"چکشی با طناب کابل"},
+legpress:{fa:"پرس پا",en:"Leg Press",mus:"چهارسر، سرینی",sets:[3,3,3],extra:0,lo:8,hi:12,rest:"۲–۳ دقیقه",rir:["۳","۲","۱–۲"],load:"machine",img:"Leg_Press",kind:"legs",h:"پاها به‌اندازهٔ عرض شانه، زانوها هم‌راستای پنجه، کمر چسبیده به پشتی. تا عمقی که کمر جدا نشود پایین بیا.",m:"جدا شدن باسن/کمر، قفل کردن زانوها، افتادن زانو به داخل.",a:"اکستنشن پا + گابلت اسکوات سبک (یادگیری تدریجی)"},
+legcurl:{fa:"جلوپا خوابیده/نشسته",en:"Seated Leg Curl",mus:"همسترینگ",sets:[3,3,3],extra:0,lo:8,hi:12,rest:"۹۰ ثانیه",rir:["۳","۲","۱–۲"],load:"machine",img:"Seated_Leg_Curl",kind:"legs",h:"محور دستگاه هم‌راستای زانو؛ کنترل‌شده خم کن و آهسته برگرد.",m:"بلند شدن باسن، حرکت سریع.",a:"لگ‌کرل خوابیده"},
+legext:{fa:"پشت‌پا (اکستنشن پا)",en:"Leg Extension",mus:"چهارسر",sets:[2,3,3],extra:0,lo:10,hi:15,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"machine",img:"Leg_Extensions",kind:"legs",h:"تا انقباض کامل بالا ببر و با کنترل پایین بیاور.",m:"پرتاب وزنه، بلند شدن باسن.",a:"پرس پا با وزن سبک‌تر"},
+calf:{fa:"ساق ایستاده",en:"Standing Calf Raise",mus:"ساق پا",sets:[3,3,3],extra:0,lo:10,hi:15,rest:"۶۰–۹۰ ثانیه",rir:["۲","۲","۱–۲"],load:"machine",img:"Standing_Calf_Raises",kind:"legs",h:"دامنهٔ کامل: پایین با کشش، بالا با مکث کوتاه.",m:"حرکت نیمه و پرشی.",a:"ساق روی پلهٔ پرس پا"},
+plank:{fa:"پلانک",en:"Plank",mus:"مرکز بدن (شکم، کمر)",sets:[3,3,3],extra:0,lo:20,hi:60,rest:"۶۰ ثانیه",rir:["۲","۲","۲"],load:"bw",unit:"ثانیه",img:"Plank",kind:"core",h:"بدن در یک خط، شکم و باسن منقبض، تنفس عادی.",m:"افتادن کمر، بالا رفتن باسن.",a:"پلانک روی زانو"},
+wristcurl:{fa:"مچ‌بند (ساعد)",en:"Dumbbell Wrist Curl",mus:"ساعد",sets:[2,3,3],extra:0,lo:12,hi:20,rest:"۶۰ ثانیه",rir:["۲","۲","۱–۲"],load:"free",img:"Palms-Up_Barbell_Wrist_Curl_Over_A_Bench",kind:"curl",h:"ساعد روی نیمکت یا ران، فقط مچ حرکت کند، دامنه کامل.",m:"وزنهٔ سنگین و حرکت کل دست.",a:"چکشی یا راه رفتن کشاورز (Farmer carry)"},
+dbpress:{fa:"پرس سرشانه دمبل نشسته",en:"Seated Dumbbell Shoulder Press",mus:"سرشانه، پشت‌بازو",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۲ دقیقه",rir:["۳","۲","۱–۲"],load:"free",img:"Dumbbell_Shoulder_Press",kind:"press",chest:1,h:"پشتی نیمکت نزدیک عمودی؛ دمبل‌ها از کنار گوش به بالا و کمی داخل.",m:"قوس کمر، دامنهٔ ناقص.",a:"پرس سرشانه دستگاه"},
+cablelat:{fa:"نشر جانب کابل",en:"Cable Lateral Raise",mus:"سرشانهٔ میانی",sets:[3,3,3],extra:1,lo:12,hi:20,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"cable",img:"Cable_Seated_Lateral_Raise",kind:"raise",h:"کابل از پایین، دست را تا سطح شانه ببر و آهسته برگردان.",m:"تاب بدن، بالا بردن شانه.",a:"نشر جانب دمبل"},
+ohtri:{fa:"پشت‌بازو بالای سر کابل",en:"Overhead Cable Triceps Extension",mus:"پشت‌بازو (سردراز)",sets:[3,3,3],extra:1,lo:10,hi:15,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"cable",img:"Triceps_Overhead_Extension_with_Rope",kind:"curl",h:"آرنج‌ها رو به جلو و ثابت، طناب را از پشت سر تا کشش بده و دراز کن.",m:"باز شدن آرنج‌ها به اطراف، قوس کمر.",a:"زیربغل طناب"},
+inclcurl:{fa:"جلوبازو دمبل روی نیمکت شیب‌دار",en:"Incline Dumbbell Curl",mus:"جلوبازو (سر بلند)",sets:[3,3,3],extra:1,lo:8,hi:12,rest:"۹۰ ثانیه",rir:["۳","۲","۱"],load:"free",img:"Alternate_Incline_Dumbbell_Curl",kind:"curl",h:"روی نیمکت شیب‌دار بنشین، دست‌ها آویزان، آرنج ثابت.",m:"بلند کردن آرنج به جلو.",a:"جلوبازو کابل"},
+mchest:{fa:"پرس سینه دستگاه",en:"Machine Chest Press",mus:"سینه، پشت‌بازو",sets:[2,3,3],extra:0,lo:10,hi:15,rest:"۹۰ ثانیه",rir:["۳","۲","۱–۲"],load:"machine",img:"Leverage_Chest_Press",kind:"press",chest:1,h:"دسته‌ها هم‌سطح میانهٔ سینه، شانه‌ها عقب. حرکت روان.",m:"شانه‌ها جلو افتاده، قفل کردن ناگهانی آرنج.",a:"شنا روی زانو یا کراس‌اوور"},
+pullup:{fa:"بارفیکس کمکی",en:"Assisted Pull-Up",mus:"لت‌ها، دوسر",sets:[3,3,3],extra:0,lo:5,hi:10,rest:"۲ دقیقه",rir:["۳","۲","۱–۲"],load:"machine",img:"Pullups",kind:"pull",h:"با کمک دستگاه کاملاً آویزان شو و آرنج را پایین بکش. وزن کمک را به‌تدریج کم کن.",m:"تاب خوردن، کوتاه‌کردن حرکت.",a:"لت‌پول‌داون"}
+};
+const DAYS={A:{t:"روز ۱ · سینه، سرشانه، پشت‌بازو",ids:["bench","incline","mshoulder","latraise","cablefly","pushdown"]},
+B:{t:"روز ۲ · پشت، لت و جلوبازو",ids:["latpd","row","dbrow","reardelt","curl","hammer"]},
+C:{t:"روز ۳ · پا، مرکز بدن و ساعد",ids:["legpress","legcurl","legext","calf","plank","wristcurl"]},
+D:{t:"روز ۴ · سرشانه، بازو و مکمل سینه/پشت",ids:["dbpress","cablelat","ohtri","inclcurl","mchest","pullup"]}};
+Object.keys(E).forEach(k=>E[k].id=k);
+const PH=[{n:"فاز ۱ · پایه‌گذاری",w:"هفته ۱–۴",d:"یادگیری تکنیک، ثبات در حضور و ثبت وزنه‌ها. دور از ناتوانی (حداقل ۲–۳ تکرار ذخیره). حجم محافظه‌کارانه."},
+{n:"فاز ۲ · پیشرفت",w:"هفته ۵–۸",d:"افزایش بار یا تکرار فقط وقتی شرایط برقرار است. اگر ریکاوری خوب است، می‌توانی برای تمرین‌های اولویت‌دار ۱ ست اضافه فعال کنی."},
+{n:"فاز ۳ · تثبیت و بازبینی",w:"هفته ۹–۱۲",d:"ادامهٔ اضافه‌بار در صورت لزوم. اگر خستگی انباشته، افت عملکرد یا درد داری، یک هفتهٔ سبک (دیلود) با حدود ۵۰٪ ست‌ها بگذار. ارزیابی ساختاریافته در پایان هفتهٔ ۱۲."}];
+const phaseOf=w=>w<=4?0:w<=8?1:2;
+function curWeek(){if(!S.start)return 1;const d=Math.floor((dayNum(today())-dayNum(S.start))/7)+1;return Math.min(12,Math.max(1,d))}
+/* ===== تصاویر / SVG جایگزین ===== */
+const POSE={
+press:[{a:[[60,28],[40,38],[44,26]]},{a:[[60,28],[44,16],[44,2]]}],
+pull:[{a:[[60,28],[46,14],[44,2]]},{a:[[60,28],[42,40],[46,26]]}],
+curl:[{a:[[60,28],[48,44],[46,60]]},{a:[[60,28],[48,44],[52,28]]}],
+raise:[{a:[[60,28],[50,44],[48,58]]},{a:[[60,28],[30,30],[12,30]]}],
+legs:[{a:[[60,28],[50,40],[54,48]],l:[[60,55],[44,66],[46,86]]},{a:[[60,28],[50,40],[54,48]],l:[[60,55],[48,70],[48,88]]}],
+core:[{plank:1},{plank:1}]};
+const mir=p=>p.map(([x,y])=>[120-x,y]);
+const pl=(p,w=4)=>`<polyline points="${p.map(q=>q.join(",")).join(" ")}" fill="none" stroke="#ff7a1a" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round"/>`;
+function fig(kind,f){const P=(POSE[kind]||POSE.press)[f];let s=`<svg viewBox="0 0 120 100" role="img" aria-label="تصویر آموزشی ساده"><rect width="120" height="100" fill="#1a1d23"/>`;
+if(P.plank){s+=`<circle cx="22" cy="48" r="7" fill="#b6f04a"/>`+pl([[29,52],[92,60]])+pl([[34,54],[34,80]])+pl([[92,60],[100,82]])}
+else{s+=`<circle cx="60" cy="14" r="8" fill="#b6f04a"/>`+pl([[60,22],[60,55]]);const L=P.l||[[60,55],[48,70],[48,86]];s+=pl(L)+pl(mir(L))+pl(P.a)+pl(mir(P.a));
+const h=P.a[2];s+=`<circle cx="${h[0]}" cy="${h[1]}" r="4" fill="#fff"/><circle cx="${120-h[0]}" cy="${h[1]}" r="4" fill="#fff"/>`}
+return s+"</svg>"}
+function fallbackHtml(kind){return fig(kind,0)+fig(kind,1)+`<div class="cap">تصویر آموزشی ساده (طرح اولیه، نه عکس یا ویدیوی واقعی). برای دیدن حرکت دقیق، لینک منبع را باز کن یا از مربی باشگاه بپرس.</div>`}
+window.imgFail=function(el,kind){const m=el.closest(".media");if(m)m.innerHTML=fallbackHtml(kind)};
+function mediaHtml(ex){return `<div class="media"><img loading="lazy" src="${IMG}${ex.img}/0.jpg" alt="${esc(ex.fa)} — حالت شروع" onerror="imgFail(this,'${ex.kind}')"><img loading="lazy" src="${IMG}${ex.img}/1.jpg" alt="${esc(ex.fa)} — حالت پایانی" onerror="imgFail(this,'${ex.kind}')"></div>
+<div class="mut">منبع: <a href="${SRC}" target="_blank" rel="noopener">free-exercise-db</a> · مجوز: دامنهٔ عمومی (طبق توضیح مخزن) · نام جستجو: ${esc(ex.en)} · مسیر تصویر این تمرین به‌صورت تکی راستی‌آزمایی نشده؛ در صورت باز نشدن، طرح آموزشی جایگزین می‌شود.</div>`}
+/* ===== ناوبری ===== */
+const TABS=[["dash","داشبورد"],["plan","برنامه تمرینی"],["food","برنامه غذایی"],["supp","مکمل‌ها"],["prog","پیشرفت من"],["month","ارزیابی ماهانه"],["res","منابع و آموزش"]];
+const R={};
+function go(id){$$(".tab").forEach(t=>t.classList.toggle("on",t.id==="t-"+id));$$("#nav button").forEach(b=>b.setAttribute("aria-selected",b.dataset.t===id));(R[id]||(()=>{}))();localStorage.setItem(KEY+"_tab",id);window.scrollTo(0,0)}
+$("#nav").innerHTML=TABS.map(([i,t])=>`<button role="tab" data-t="${i}">${t}</button>`).join("");
+$("#nav").addEventListener("click",e=>{const b=e.target.closest("button");if(b)go(b.dataset.t)});
+/* ===== محاسبات ===== */
+function latestWeight(){const w=S.daily.filter(d=>d.weight).sort((a,b)=>a.date<b.date?-1:1);return w.length?w[w.length-1].weight:null}
+function startWeight(){const w=S.daily.filter(d=>d.weight).sort((a,b)=>a.date<b.date?-1:1);return w.length?w[0].weight:(S.q.weight||null)}
+function nutri(){const w=latestWeight()||S.q.weight||86,h=177,a=18;const bmr=10*w+6.25*h-5*a+5;
+const af={low:1.4,mid:1.5,high:1.6}[S.q.steps]||1.45;const g=S.prefs.goal;const k=Math.round(bmr*af*(1+g)/50)*50;
+const p=Math.round(1.8*w/5)*5,f=Math.round(0.8*w/5)*5,c=Math.max(0,Math.round((k-p*4-f*9)/4/5)*5);
+return{w,bmr:Math.round(bmr),af,g,k,p,plo:Math.round(1.6*w/5)*5,phi:Math.round(2.2*w/5)*5,f,c,tdee:Math.round(bmr*af/50)*50,usedW:!!(latestWeight()||S.q.weight)}}
+function sessionList(){return Object.entries(S.sessions).map(([k,v])=>({k,...v}))}
+function doneCount(w){return sessionList().filter(s=>s.done&&(w?s.week===w:true)).length}
+function nextWorkout(){const t=(new Date().getDay()+1)%7;let best=null;for(const [d,i] of Object.entries(S.dayMap)){const diff=(i-t+7)%7;if(best===null||diff<best.diff)best={d,diff}}
+return best?{d:best.d,diff:best.diff,name:WD[S.dayMap[best.d]]}:null}
+function prevPerf(exId,key){const arr=sessionList().filter(s=>s.k!==key&&s.ex&&s.ex[exId]&&(s.ex[exId].sets||[]).some(x=>x&&(x.w||x.r))).sort((a,b)=>(a.date||"")<(b.date||"")?-1:1);return arr.length?arr[arr.length-1]:null}
+function suggest(ex,sess,setsN,ph){const d=sess.ex&&sess.ex[ex.id];if(!d)return"";const sets=(d.sets||[]).slice(0,setsN).filter(x=>x&&num(x.r)!==null);if(!sets.length)return"";
+if(sess.pain||(d.pain)){return `<div class="warn">درد گزارش شده: وزنه را افزایش نده. اگر درد تیز یا رو‌به‌بدتر شدن است، همین تمرین را متوقف کن و ارزیابی تخصصی بگیر.</div>`}
+if(num(sess.fatigue)>=4)return `<div class="note">ریکاوری ضعیف گزارش شده: این جلسه افزایش وزنه پیشنهاد نمی‌شود؛ خواب و تغذیه را بررسی کن.</div>`;
+const unit=ex.unit?"ثانیه":"تکرار";
+const allFull=sets.length>=setsN&&sets.every(x=>num(x.r)>=ex.hi&&(num(x.i)===null||num(x.i)>=1));
+const low=sets.some(x=>num(x.r)<ex.lo);
+if(allFull){const inc=ex.load==="free"?"حدود ۲٫۵ کیلو برای هالتر یا ۱ تا ۲ کیلو برای هر دمبل":ex.load==="bw"?"۵ تا ۱۰ ثانیه":"یک پین (کوچک‌ترین گام ممکن) در دستگاه/کابل";
+return `<div class="good">همهٔ ست‌ها به سقف ${unit} رسید. اگر تکنیک تمیز بود، جلسهٔ بعد افزایش کوچک پیشنهاد می‌شود: ${inc}. بعد از افزایش، دوباره از حدود ابتدای دامنه شروع کن.</div>`}
+if(low)return `<div class="note">بعضی ست‌ها زیر حداقل دامنه (${fa(ex.lo,0)}) ماند. وزنه کمی زیاد است؛ جلسهٔ بعد کمی سبک‌تر یا همین وزن با تمرکز بر تکنیک.</div>`;
+return `<div class="note">وزنه مناسب است. جلسهٔ بعد هدف: همان وزن و اضافه کردن ۱ ${unit} در ست‌ها تا به سقف دامنه (${fa(ex.hi,0)}) برسی.</div>`}
+/* ===== نمودارها ===== */
+function lineChart(pts,{unit="",w=560,h=180}={}){pts=pts.filter(p=>p.y!==null&&p.y!==undefined);
+if(pts.length<2)return `<div class="mut">داده کافی نیست. حداقل دو ثبت لازم است؛ داده‌ای ساخته نمی‌شود.</div>`;
+const ys=pts.map(p=>p.y),mn=Math.min(...ys),mx=Math.max(...ys),pad=(mx-mn)||1,L=36,T=14,B=26;
+const X=i=>L+(w-L-10)*i/(pts.length-1),Y=v=>T+(h-T-B)*(1-(v-mn)/pad);
+const d=pts.map((p,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(p.y).toFixed(1)).join(" ");
+return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;height:auto" role="img" aria-label="نمودار روند ${unit}"><path d="${d}" fill="none" stroke="#b6f04a" stroke-width="3" stroke-linejoin="round"/>
+${pts.map((p,i)=>`<circle cx="${X(i)}" cy="${Y(p.y)}" r="4" fill="#ff7a1a"/><text x="${X(i)}" y="${h-8}" fill="#aab0b9" font-size="11" text-anchor="middle">${esc(p.x)}</text>`).join("")}
+<text x="4" y="${T+4}" fill="#aab0b9" font-size="11">${fa(mx)}</text><text x="4" y="${h-B}" fill="#aab0b9" font-size="11">${fa(mn)}</text></svg>`}
+function weeklyAvg(key="weight"){const ds=S.daily.filter(d=>d[key]).sort((a,b)=>a.date<b.date?-1:1);if(!ds.length)return[];const f=dayNum(ds[0].date),b={};
+ds.forEach(d=>{const i=Math.floor((dayNum(d.date)-f)/7);(b[i]=b[i]||[]).push(d[key])});
+return Object.keys(b).map(i=>({x:"ه"+fa(+i+1,0),y:+avg(b[i]).toFixed(2),n:b[i].length}))}
+/* ===== داشبورد ===== */
+R.dash=function(){const wk=curWeek(),ph=PH[phaseOf(wk)],nw=nextWorkout(),n=nutri();
+const sw=startWeight(),cw=latestWeight(),wa=weeklyAvg();
+const weeksElapsed=S.start?Math.max(1,Math.min(12,Math.floor((dayNum(today())-dayNum(S.start))/7)+1)):0;
+const adh=weeksElapsed?Math.min(100,Math.round(doneCount()/(4*weeksElapsed)*100)):null;
+const sl=avg(S.daily.filter(d=>d.sleep).slice(-7).map(d=>d.sleep)),nu=avg(S.daily.filter(d=>d.nutr!==undefined&&d.nutr!=="").slice(-7).map(d=>+d.nutr));
+const waist=weeklyAvg("waist");
+$("#t-dash").innerHTML=`<h2>داشبورد</h2>
+${!S.q.saved?`<div class="note"><b>نسخهٔ اولیه (پیش‌فرض):</b> محاسبات این برنامه با فرض‌های محافظه‌کارانه انجام شده‌اند. برای شخصی‌تر شدن، <a href="#" data-go="res">پرسش‌نامهٔ اولیه</a> را پر کن (پرسش‌نامه در بخش «منابع و آموزش» است).</div>`:""}
+${!S.start?`<div class="card"><b>برنامه هنوز شروع نشده.</b><p class="mut">وقتی آمادهای، شروع ۱۲ هفته را ثبت کن تا هفته و فاز فعلی محاسبه شوند.</p><button class="btn" data-act="startPlan">شروع برنامه از امروز</button></div>`:""}
+<div class="grid">
+<div class="kpi"><div class="v">${fa(cw??sw)}${(cw??sw)?" کیلو":""}</div><div class="l">وزن فعلی ${cw?'<span class="tag user">ثبت‌شده</span>':sw?'<span class="tag user">از پرسش‌نامه</span>':""}</div></div>
+<div class="kpi"><div class="v">${fa(sw)}</div><div class="l">وزن شروع</div></div>
+<div class="kpi"><div class="v">${fa(doneCount(wk),0)}/۴</div><div class="l">جلسات این هفته</div></div>
+<div class="kpi"><div class="v">${adh===null?"—":fa(adh,0)+"٪"}</div><div class="l">پایبندی تمرین</div></div>
+<div class="kpi"><div class="v">${sl?fa(sl):"—"}</div><div class="l">میانگین خواب ۷ ثبت اخیر (ساعت)</div></div>
+<div class="kpi"><div class="v">${nu!==null?fa(nu,0)+"٪":"—"}</div><div class="l">پایبندی تغذیه (اخیر)</div></div></div>
+<div class="card" style="margin-top:14px"><h3>فاز فعلی: ${ph.n}</h3><div class="mut">هفتهٔ ${fa(wk,0)} از ۱۲ · ${ph.w}</div><div class="bar" style="margin:8px 0"><i style="width:${wk/12*100}%"></i></div><p>${ph.d}</p>
+<p><b>جلسهٔ بعدی:</b> ${nw?`${DAYS[nw.d].t} — ${nw.diff===0?"امروز":nw.diff===1?"فردا":WD[S.dayMap[nw.d]]}`:"—"}</p><button class="btn" data-go="plan">رفتن به تمرین</button></div>
+<div class="card"><h3>روند وزن (میانگین هفتگی)</h3>${lineChart(wa,{unit:"وزن"})}<p class="mut">هر نقطه میانگین چند توزین صبحگاهی است. نوسان‌های کوتاه‌مدت معمولاً آب، گلیکوژن و حجم غذا هستند، نه چربی.</p></div>
+<div class="card"><h3>دور کمر (اختیاری)</h3>${lineChart(waist,{unit:"دور کمر"})}</div>
+<div class="card"><h3>روند عملکرد در یک تمرین</h3><select id="exTrend" aria-label="انتخاب تمرین">${Object.values(E).map(e=>`<option value="${e.id}">${e.fa}</option>`).join("")}</select><div id="exTrendC"></div></div>
+<div class="card"><h3>خواب</h3><p>خواب فعلی (خوابیدن حدود ساعت ۲ بامداد) می‌تواند ریکاوری و اشتهای تو را تحت‌تأثیر قرار دهد. هدف عملی: حداقل ۷ ساعت (برای ۱۸ سالگی ۸ ساعت منطقی‌تر است) و ساعت ثابت خواب؛ هر شب ۳۰ دقیقه زودتر شروع کن. کافئین را بعد از ظهر حذف کن.</p></div>`;
+const upd=()=>{const id=$("#exTrend").value;const pts=sessionList().filter(s=>s.ex&&s.ex[id]).sort((a,b)=>(a.date||"")<(b.date||"")?-1:1).map(s=>{const ws=(s.ex[id].sets||[]).map(x=>num(x&&x.w)).filter(v=>v!==null);return{x:fdate(s.date).slice(-5),y:ws.length?Math.max(...ws):null}});$("#exTrendC").innerHTML=lineChart(pts,{unit:"بیشینهٔ وزنهٔ ست‌ها"})};
+$("#exTrend").onchange=upd;upd()};
+/* ===== برنامه تمرینی ===== */
+const ui={week:null,day:"A"};
+R.plan=function(){if(!ui.week)ui.week=curWeek();const w=ui.week,pi=phaseOf(w),ph=PH[pi];
+const q=S.q;const unclear=(q.benchBar!=="yes"&&q.benchBar!=="no")||!q.pressType;
+$("#t-plan").innerHTML=`<h2>برنامه تمرینی ۱۲ هفته‌ای</h2>
+<div class="card"><label>هفته</label><select id="wkSel">${Array.from({length:12},(_,i)=>`<option value="${i+1}" ${i+1===w?"selected":""}>هفتهٔ ${fa(i+1,0)}${i+1===12?" (ارزیابی نهایی)":""}</option>`).join("")}</select>
+<h3 style="margin-top:10px">${ph.n} <span class="mut">${ph.w}</span></h3><p>${ph.d}</p>
+<label class="chk"><input type="checkbox" id="extraChk" ${S.prefs.extra?"checked":""}>فعال‌سازی ست اضافه برای تمرین‌های اولویت‌دار (فقط اگر خواب، درد و ریکاوری خوب است)</label>
+${w===12?`<div class="note"><b>هفتهٔ ارزیابی:</b> در پایان این هفته به «ارزیابی ماهانه» برو و ارزیابی نهایی را ثبت کن.</div>`:""}
+<div class="note">قانون دیلود: اگر دو جلسهٔ پشت‌سرهم عملکرد افت کرد، خستگی/درد مزمن داری یا خواب خیلی کم است، یک هفته ست‌ها را به نصف برسان و وزنه را حدود ۱۰٪ کم کن. حجم را هر هفته به‌صورت خودکار زیاد نکن.</div>
+<div class="warn"><b>ایمنی:</b> درد تیز، درد مفصلی که بدتر می‌شود، سرگیجه، درد قفسهٔ سینه یا بی‌حسی علامت توقف است؛ تمرین را متوقف کن و ارزیابی پزشکی/فیزیوتراپی بگیر.</div>
+${unclear?`<div class="note"><b>ابهام در اعداد گزارش‌شده:</b> وزنهٔ پرس سینه و سرشانهٔ ۴۰–۴۵ کیلو هنوز دقیق نیست (آیا هالتر ۲۰ کیلویی را شامل می‌شود؟ پرس سرشانه با دستگاه بود یا هالتر؟). تا روشن شدن، از وزنه‌ای شروع کن که ست‌ها با RIR هدف انجام شود و عددی از ۱RM تست نگیر. پرسش‌نامه را تکمیل کن.</div>`:""}
+<button class="btn sec noprint" onclick="window.print()">چاپ برنامه</button></div>
+<div class="card"><h3>روزهای تمرین (قابل تغییر)</h3><div class="form">${Object.keys(DAYS).map(k=>`<div><label>${DAYS[k].t.split("·")[0]}</label><select data-dm="${k}">${WD.map((n,i)=>`<option value="${i}" ${S.dayMap[k]===i?"selected":""}>${n}</option>`).join("")}</select></div>`).join("")}</div><div class="mut">روزهای دیگر استراحت یا کاردیو سبک (۲۰–۳۰ دقیقه پیاده‌روی سریع) است. روز تکراری انتخاب نکن.</div></div>
+<div class="chips" role="tablist">${Object.keys(DAYS).map(k=>`<button data-day="${k}" class="${ui.day===k?"on":""}">${DAYS[k].t}<br><span class="mut" style="color:inherit">${WD[S.dayMap[k]]} · ${S.sessions[w+"-"+k]?.done?"✓ انجام شد":""}</span></button>`).join("")}</div>
+<div id="dayBody"></div>`;
+renderDay();
+$("#wkSel").onchange=e=>{ui.week=+e.target.value;R.plan()};
+$("#extraChk").onchange=e=>{S.prefs.extra=e.target.checked;save();renderDay()};
+$$("[data-dm]").forEach(s=>s.onchange=e=>{S.dayMap[e.target.dataset.dm]=+e.target.value;const v=Object.values(S.dayMap);if(new Set(v).size<4)alert("دو جلسه روی یک روز افتاده‌اند؛ لطفاً روزها را متفاوت انتخاب کن.");save();R.plan()});
+$$("[data-day]").forEach(b=>b.onclick=()=>{ui.day=b.dataset.day;R.plan()});
+buildPrint()};
+function setsFor(ex,pi){return ex.sets[pi]+((S.prefs.extra&&pi>0&&ex.extra)?1:0)}
+function renderDay(){const w=ui.week,pi=phaseOf(w),key=w+"-"+ui.day;const sess=S.sessions[key]||{ex:{}};
+const loadTxt={free:"وزنهٔ آزاد (دمبل/هالتر)",machine:"دستگاه (پین/استک)",cable:"کابل (استک)",bw:"وزن بدن"};
+let h=`<h2>${DAYS[ui.day].t}</h2>`;
+h+=DAYS[ui.day].ids.map(id=>{const ex=E[id],n=setsFor(ex,pi),d=(sess.ex||{})[id]||{},pv=prevPerf(id,key);
+const unit=ex.unit||"تکرار";const pvT=pv?pv.ex[id].sets.slice(0,n).map(x=>x&&(x.w||x.r)?`${fa(num(x.w),1)}×${fa(num(x.r),0)}`:"—").join(" ، ")+` <span class="mut">(${fdate(pv.date)})</span>`:"هنوز سابقه‌ای ثبت نشده";
+return `<article class="card"><div class="ex"><div>${mediaHtml(ex)}</div><div>
+<h3>${ex.fa} <span class="mut" dir="ltr">${ex.en}</span></h3>
+<div><span class="badge hi">${fa(n,0)} ست</span><span class="badge hi">${fa(ex.lo,0)}–${fa(ex.hi,0)} ${unit}</span><span class="badge">استراحت ${ex.rest}</span><span class="badge">RIR ${ex.rir[pi]}</span><span class="badge">${loadTxt[ex.load]}</span></div>
+<p class="mut">عضلات: ${ex.mus}</p>
+${S.prefs.extra&&pi>0&&ex.extra?`<div class="mut">ست اضافه فعال است (+۱).</div>`:""}
+${ex.chest&&((S.q.benchBar!=="yes"&&S.q.benchBar!=="no")||!S.q.pressType)?`<div class="note">وزنهٔ شروع این حرکت هنوز روشن نیست (ابهام در پرسش‌نامه).</div>`:""}
+<details><summary>تکنیک، اشتباهات و جایگزین</summary><p><b>تکنیک:</b> ${ex.h}</p><p><b>اشتباهات رایج:</b> ${ex.m}</p><p><b>جایگزین/ساده‌تر:</b> ${ex.a}</p>
+<p><b>پیشرفت:</b> ${ex.load==="free"?"وقتی در همهٔ ست‌ها به سقف تکرار رسیدی با تکنیک خوب و RIR هدف، افزایش کوچک (۱–۲٫۵ کیلو).":ex.load==="bw"?"زمان را به‌تدریج اضافه کن.":"وقتی در همهٔ ست‌ها به سقف تکرار رسیدی، یک پین بالاتر برو. وزن استک دستگاه با وزنهٔ آزاد قابل مقایسه نیست."} در صورت درد، فشار زیاد یا خواب کم، افزایش نده.</p></details>
+<div><b>ثبت ست‌ها</b> <span class="mut">(وزنه کیلو · ${unit} · RIR)</span></div>
+<div class="mut">قبلی: ${pvT}</div>
+${Array.from({length:n},(_,i)=>{const s=(d.sets||[])[i]||{};return `<div class="setrow"><span>${fa(i+1,0)}</span><input inputmode="decimal" aria-label="وزنه ست ${i+1}" placeholder="kg" value="${esc(s.w??"")}" data-ex="${id}" data-i="${i}" data-f="w"><input inputmode="numeric" aria-label="${unit} ست ${i+1}" placeholder="${unit}" value="${esc(s.r??"")}" data-ex="${id}" data-i="${i}" data-f="r"><input inputmode="numeric" aria-label="RIR ست ${i+1}" placeholder="RIR" value="${esc(s.i??"")}" data-ex="${id}" data-i="${i}" data-f="i"></div>`}).join("")}
+<label class="chk"><input type="checkbox" data-done="${id}" ${d.done?"checked":""}>انجام شد</label>
+<label class="chk"><input type="checkbox" data-pain="${id}" ${d.pain?"checked":""}>درد/ناراحتی داشتم</label>
+<div id="sg-${id}">${suggest(ex,sess,n,pi)}</div></div></div></article>`}).join("");
+h+=`<div class="card"><h3>گزارش جلسه</h3><label>سطح خستگی/ریکاوری (۱ عالی ← ۵ بد)</label><select id="fat">${[1,2,3,4,5].map(i=>`<option value="${i}" ${num(sess.fatigue)===i?"selected":""}>${fa(i,0)}</option>`).join("")}</select>
+<label class="chk"><input type="checkbox" id="painAll" ${sess.pain?"checked":""}>درد یا مشکل غیرعادی در این جلسه</label>
+<label>یادداشت</label><textarea id="sNote" rows="2">${esc(sess.note||"")}</textarea>
+<div style="margin-top:10px"><button class="btn" id="finish">${sess.done?"جلسه کامل ثبت شده ✓ (ویرایش)":"ثبت کامل شدن جلسه"}</button></div></div>`;
+$("#dayBody").innerHTML=h;
+const getS=()=>{const k=w+"-"+ui.day;if(!S.sessions[k])S.sessions[k]={week:w,day:ui.day,date:today(),ex:{},done:false};return S.sessions[k]};
+$$("#dayBody .setrow input").forEach(inp=>inp.oninput=()=>{const s=getS(),ex=s.ex[inp.dataset.ex]=s.ex[inp.dataset.ex]||{sets:[]};const i=+inp.dataset.i;ex.sets[i]=ex.sets[i]||{};ex.sets[i][inp.dataset.f]=inp.value;save();$("#sg-"+inp.dataset.ex).innerHTML=suggest(E[inp.dataset.ex],s,setsFor(E[inp.dataset.ex],pi),pi)});
+$$("[data-done]").forEach(c=>c.onchange=()=>{const s=getS(),ex=s.ex[c.dataset.done]=s.ex[c.dataset.done]||{sets:[]};ex.done=c.checked;save()});
+$$("[data-pain]").forEach(c=>c.onchange=()=>{const s=getS(),ex=s.ex[c.dataset.pain]=s.ex[c.dataset.pain]||{sets:[]};ex.pain=c.checked;save();$("#sg-"+c.dataset.pain).innerHTML=suggest(E[c.dataset.pain],s,setsFor(E[c.dataset.pain],pi),pi)});
+$("#fat").onchange=e=>{getS().fatigue=e.target.value;save()};
+$("#painAll").onchange=e=>{getS().pain=e.target.checked;save();renderDay()};
+$("#sNote").oninput=e=>{getS().note=e.target.value;save()};
+$("#finish").onclick=()=>{const s=getS();s.done=true;s.fatigue=$("#fat").value;s.date=s.date||today();save();alert("جلسه ثبت شد. عالی!");R.plan()}}
+function buildPrint(){const pi=phaseOf(ui.week||1);$("#printPlan").innerHTML=`<h2>برنامه تمرینی — ${PH[pi].n}</h2>`+Object.keys(DAYS).map(k=>`<h3>${DAYS[k].t} (${WD[S.dayMap[k]]})</h3><table><tr><th>تمرین</th><th>ست×تکرار</th><th>استراحت</th><th>RIR</th></tr>${DAYS[k].ids.map(id=>{const e=E[id];return `<tr><td>${e.fa} (${e.en})</td><td>${fa(e.sets[pi],0)}×${fa(e.lo,0)}–${fa(e.hi,0)}</td><td>${e.rest}</td><td>${e.rir[pi]}</td></tr>`}).join("")}</table>`).join("")+`<p>این برنامه جایگزین مشاورهٔ پزشکی یا مربی حضوری نیست.</p>`}
+/* ===== تغذیه ===== */
+const MEALS=[
+{n:"صبحانه",t:"۱–۲ ساعت پس از بیدار شدن",i:[["۳ عدد تخم‌مرغ (آب‌پز یا نیمرو با کمی روغن)","۳ عدد",230,19,2,16],["نان (بربری/سنگک/لواش)، وزن خام/آماده","۱۰۰ گرم ≈ ۱ قطعهٔ متوسط",260,9,52,1],["شیر کم‌چرب","۲۵۰ میلی‌لیتر ≈ ۱ لیوان",125,8,12,4],["خیار و گوجه","به‌دلخواه",20,1,4,0]]},
+{n:"ناهار",t:"۳–۴ ساعت قبل از تمرین",i:[["سینه مرغ (وزن خام)","۲۰۰ گرم",220,46,0,3],["برنج (وزن خام)","۱۰۰ گرم ≈ ۶ قاشق غذاخوری پر خام",350,7,78,1],["سالاد + ۱ قاشق غذاخوری روغن زیتون","یک کاسه + ۱ ق.غ",150,2,8,14]]},
+{n:"پیش‌تمرین",t:"۶۰–۹۰ دقیقه قبل از تمرین",i:[["موز","۱ عدد متوسط",105,1,27,0],["ماست کم‌چرب","۲۰۰ گرم ≈ ۱ کاسه",120,8,10,3],["جو دوسر (خام)","۳۰ گرم ≈ ۳ ق.غ",115,4,20,2]]},
+{n:"پس‌تمرین",t:"تا ۱–۲ ساعت پس از تمرین",i:[["مرغ (وزن خام)","۱۵۰ گرم",165,35,0,2],["سیب‌زمینی (خام و پوست‌کنده)","۲۰۰ گرم ≈ ۲ عدد متوسط",155,4,34,0]]},
+{n:"شام",t:"حداقل ۲ ساعت قبل از خواب",i:[["عدس یا لوبیا پخته","۲۰۰ گرم ≈ ۱ کاسه",230,18,40,1],["تخم‌مرغ","۲ عدد",155,13,1,11],["نان","۶۰ گرم",155,5,31,1]]}];
+const SNACK={n:"میان‌وعدهٔ اختیاری (در صورت گرسنگی)",i:[["مغزها (گردو/بادام)","۲۰–۳۰ گرم، یک مشت کوچک",150,5,5,13],["میوه","۱ عدد",80,1,20,0]]};
+const sum=a=>a.reduce((t,x)=>({k:t.k+x[2],p:t.p+x[3],c:t.c+x[4],f:t.f+x[5]}),{k:0,p:0,c:0,f:0});
+R.food=function(){const n=nutri();const all=sum(MEALS.flatMap(m=>m.i));
+$("#t-food").innerHTML=`<h2>برنامه غذایی</h2>
+<div class="note"><b>برآورد اولیه:</b> این اعداد نقطهٔ شروع‌اند، نه اندازه‌گیری دقیق. بدون دور کمر، درصد چربی و قدم روزانه، فرض‌ها محافظه‌کارانه‌اند.</div>
+<div class="card"><h3>فرض‌ها <span class="tag est">برآورد</span></h3>
+<ul><li>سن ۱۸، قد ۱۷۷ سانتی‌متر <span class="tag user">گزارش کاربر</span></li><li>وزن ${fa(n.w)} کیلو ${n.usedW?'<span class="tag user">گزارش/ثبت کاربر</span>':'<span class="tag est">فرض</span>'}</li>
+<li>متابولیسم پایه (فرمول میفلین–سن‌ژئور): ${fa(n.bmr,0)} کیلوکالری</li>
+<li>ضریب فعالیت ${fa(n.af,2)} ${S.q.steps?'<span class="tag user">بر اساس قدم گزارش‌شده</span>':'<span class="tag est">فرض: دانشجو + ۴ جلسه تمرین</span>'}</li>
+<li>نگهدارنده تقریبی: ${fa(n.tdee,0)} کیلوکالری</li></ul>
+<label>هدف انرژی</label><select id="goalSel"><option value="-0.10" ${n.g===-0.1?"selected":""}>کاهش ملایم چربی (حدود ۱۰٪ کمتر، پیش‌فرض)</option><option value="-0.05" ${n.g===-0.05?"selected":""}>بسیار ملایم (حدود ۵٪ کمتر)</option><option value="0" ${n.g===0?"selected":""}>نگهداری (ریکامپوزیشن)</option></select>
+<div class="grid" style="margin-top:12px"><div class="kpi"><div class="v">${fa(n.k,0)}</div><div class="l">کالری هدف (تقریبی، ±۱۰٪)</div></div><div class="kpi"><div class="v">${fa(n.plo,0)}–${fa(n.phi,0)}g</div><div class="l">دامنهٔ پروتئین (۱٫۶–۲٫۲ گرم/کیلو)؛ هدف ≈ ${fa(n.p,0)}</div></div><div class="kpi"><div class="v">≈ ${fa(n.c,0)}g</div><div class="l">کربوهیدرات</div></div><div class="kpi"><div class="v">≈ ${fa(n.f,0)}g</div><div class="l">چربی</div></div></div>
+<p class="mut">هدف وزن مشخصی تعیین نشده است؛ ملاک پیشرفت، روند میانگین وزن، دور کمر، عملکرد در باشگاه، گرسنگی و پایبندی است.</p></div>
+<div class="card"><h3>نمونهٔ یک روز</h3><p class="mut">همهٔ وزن‌ها برای مواد خام است مگر ذکر «پخته». مقادیر تقریبی‌اند و بین برندها فرق می‌کنند.</p>
+${MEALS.map(m=>{const s=sum(m.i);return `<details ${m.n==="ناهار"?"open":""}><summary>${m.n} · ${m.t} · ≈${fa(s.k,0)} کیلوکالری</summary><table><tr><th>ماده</th><th>مقدار</th><th>کالری</th><th>پروتئین</th></tr>${m.i.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${fa(x[2],0)}</td><td>${fa(x[3],0)}</td></tr>`).join("")}</table><div class="mut">جمع: پروتئین ${fa(s.p,0)} · کربو ${fa(s.c,0)} · چربی ${fa(s.f,0)} گرم</div></details>`}).join("")}
+<details><summary>${SNACK.n} · ≈${fa(sum(SNACK.i).k,0)} کیلوکالری</summary><table>${SNACK.i.map(x=>`<tr><td>${x[0]}</td><td>${x[1]}</td><td>${fa(x[2],0)}</td></tr>`).join("")}</table></details>
+<div class="good"><b>جمع نمونهٔ روز (بدون میان‌وعده):</b> ≈${fa(all.k,0)} کیلوکالری، پروتئین ≈${fa(all.p,0)}، کربو ≈${fa(all.c,0)}، چربی ≈${fa(all.f,0)} گرم. اختلاف با هدف (${fa(n.k,0)}) در محدودهٔ خطای برآورد است؛ اگر وزن و قدم تو تغییر کرد، مقدار برنج، نان یا سیب‌زمینی را کم یا زیاد کن.</div></div>
+<div class="card"><h3>جایگزین‌ها</h3><ul><li>مرغ ↔ ماهی (قزل‌آلا/تن)، گوشت قرمز کم‌چرب، لوبیا و عدس + ماست</li><li>برنج ↔ سیب‌زمینی، ماکارونی، نان، بلغور</li><li>تخم‌مرغ ↔ پنیر کم‌چرب، ماست یوناني، لبنیات</li><li>اگر لبنیات یا گلوتن مشکل دارد، پرسش‌نامه را تکمیل کن تا جایگزین مناسب شود.</li></ul>
+<h3>اقتصادی و سریع</h3><ul><li>تخم‌مرغ، عدس، لوبیا، جو دوسر، ماست و مرغ ران بدون پوست ارزان‌ترین پروتئین‌هاست.</li><li>یک‌بار در هفته مرغ و برنج را به‌صورت انبوه بپز و در ظرف‌های جدا نگه دار (مناسب دانشجو و تولیدکنندهٔ محتوا).</li></ul></div>
+<div class="card"><h3>لیست خرید هفتگی (تقریبی برای یک نفر)</h3><ul><li>تخم‌مرغ ۴۲ عدد</li><li>سینه یا ران مرغ ≈ ۳ کیلو</li><li>برنج ≈ ۰٫۷ کیلو، سیب‌زمینی ≈ ۱٫۴ کیلو، نان ≈ ۱ کیلو</li><li>شیر ≈ ۲ لیتر، ماست کم‌چرب ≈ ۲ کیلو</li><li>جو دوسر ≈ ۰٫۲ کیلو، عدس/لوبیا ≈ ۰٫۵ کیلو</li><li>موز، سبزی و میوه، گوجه و خیار، روغن زیتون، مغزها</li></ul></div>
+<div class="card"><h3>زمان‌بندی و سبک زندگی</h3><p>۳–۵ وعده در روز با پروتئین حدود ۳۰–۵۰ گرم در هر وعدهٔ اصلی. برنامهٔ خواب ثابت و کمتر شدن میان‌وعده‌های شبانه به کنترل اشتها کمک می‌کند. اگر وقت پخت کم است، همین وعده‌ها را تکرار کن؛ تنوع الزامی نیست.</p></div>`;
+$("#goalSel").onchange=e=>{S.prefs.goal=+e.target.value;save();R.food()}};
+/* ===== مکمل‌ها ===== */
+const SUPP=[
+{n:"کراتین مونوهیدرات",u:"احتمالاً مفید (اختیاری)",w:"ذخیرهٔ فسفوکراتین را افزایش می‌دهد و می‌تواند قدرت و حجم تمرین را کمی بهتر کند.",ev:"از پرشواهدترین مکمل‌ها برای قدرت و توده بدون چربی (موضع ISSN).",d:"لازم نیست؛ تغذیه و تمرین مهم‌تر است. مصرف گوشت و ماهی مقداری کراتین می‌دهد.",s:"در افراد سالم معمولاً ایمن در مطالعات. افزایش ۰٫۵–۱ کیلو وزن (آب) در هفته‌های اول طبیعی است و روند وزن را مخدوش می‌کند. آب کافی بنوش.",p:"اگر بیماری کلیوی یا دارو مصرف می‌کنی، قبل از مصرف با پزشک مشورت کن. برای زیر ۱۸ سال شواهد کمتر است؛ برند معتبر و آزمایش‌شده انتخاب کن.",dose:"معمول در مطالعات: ۳–۵ گرم مونوهیدرات در روز؛ بارگیری لازم نیست."},
+{n:"پودر پروتئین",u:"فقط برای راحتی",w:"منبع راحت پروتئین.",ev:"برای رسیدن به هدف پروتئین مفید است؛ بر غذای کامل برتری ندارد.",d:"اگر پروتئین غذا کافی باشد، لازم نیست.",s:"اگر حساسیت به لبنیات داری، نوع مناسب انتخاب کن؛ کیفیت و آلودگی را بررسی کن.",p:"در صورت بیماری کلیوی با پزشک مشورت کن.",dose:"یک اسکوپ حدود ۲۰–۲۵ گرم پروتئین؛ فقط برای جبران کمبود."},
+{n:"ویتامین D",u:"فقط در صورت نیاز",w:"سلامت استخوان و عملکرد عضله در حد کمبود.",ev:"در افراد بدون کمبود، اثر مستقیم روی رشد عضله اثبات‌شده نیست.",d:"نور خورشید و ماهی/تخم‌مرغ کمک می‌کنند.",s:"مصرف زیاد خطرناک است؛ طبق NIH حداکثر ایمن بزرگسالان ۴۰۰۰ واحد (۱۰۰ میکروگرم) در روز است.",p:"اگر کم‌نوری یا تیره‌پوستی یا شکایت داری، آزمایش 25(OH)D و نظر پزشک.",dose:"دوز را پزشک بر اساس آزمایش تعیین کند."},
+{n:"ویتامین B12",u:"معمولاً لازم نیست",w:"تولید گلبول قرمز و عصب.",ev:"کمبود در رژیم‌های گیاهی یا جذب ضعیف مهم است.",d:"گوشت، ماهی، تخم‌مرغ و لبنیات کافی است.",s:"مصرف کم معمولاً بی‌خطر؛ ولی بی‌دلیل نیست.",p:"علایم (کم‌خونی، بی‌حسی) یا رژیم گیاهی → آزمایش.",dose:"بر اساس نظر پزشک."},
+{n:"آهن",u:"فقط با آزمایش",w:"حمل اکسیژن.",ev:"فقط در کمبود مفید است.",d:"گوشت قرمز، حبوبات و سبزی.",s:"مصرف خودسرانه خطرناک است (مسمومیت، یبوست).",p:"قبل از مصرف حتماً آزمایش و نظر پزشک.",dose:"خودسرانه مصرف نکن."},
+{n:"امگا-۳ (روغن ماهی)",u:"اگر ماهی کم می‌خوری",w:"چربی‌های EPA و DHA.",ev:"برای سلامت قلب و عروق؛ اثر روی توده عضله ضعیف است.",d:"هفته‌ای ۲ وعده ماهی می‌تواند کافی باشد.",s:"داروهای رقیق‌کنندهٔ خون با دوز بالا تداخل دارد.",p:"اگر دارو مصرف می‌کنی با پزشک.",dose:"اگر ماهی نمی‌خوری، دوز را با مشاور تغذیه یا پزشک تعیین کن."},
+{n:"مولتی‌ویتامین",u:"معمولاً لازم نیست",w:"پوشش کمبودهای احتمالی.",ev:"در رژیم متنوع اثر اضافی روشن نیست.",d:"میوه، سبزی و پروتئین متنوع.",s:"دوز بالا یا مصرف همزمان چند مکمل می‌تواند از حد مجاز بگذرد.",p:"فقط اگر رژیم بسیار محدود است.",dose:"محصول با دوز نزدیک ۱۰۰٪ نیاز روزانه، نه دوز بالا."},
+{n:"کافئین",u:"با احتیاط",w:"افزایش هوشیاری و کمی قدرت/استقامت.",ev:"مطالعات از بهبود عملکرد حمایت می‌کنند (ISSN).",d:"قهوه یا چای کافی است.",s:"خواب فعلی ضعیف است؛ کافئین می‌تواند آن را بدتر کند. اگر مصرف می‌کنی، دوز کم و حداقل ۸ ساعت قبل از خواب؛ اول خواب را اصلاح کن.",p:"اگر تپش قلب، اضطراب یا بیماری قلبی داری، مصرف نکن.",dose:"اگر مصرف می‌کنی، با مقدار کم (مثلاً یک فنجان قهوه) و صبح یا قبل از ظهر شروع کن."}];
+R.supp=function(){$("#t-supp").innerHTML=`<h2>مکمل‌ها</h2><div class="warn"><b>مهم:</b> هیچ مکملی ضروری نیست. غذای کامل، تمرین و خواب اولویت دارند. استروئید آنابولیک، SARM، پروهورمون، چربی‌سوزهای پرخطر و محصولات بدون آزمایش مستقل را مصرف نکن. بیماری و داروها را با پزشک مرور کن.</div>`+SUPP.map(s=>`<article class="card"><h3>${s.n} <span class="badge hi">${s.u}</span></h3><p><b>چه می‌کند:</b> ${s.w}</p><p><b>شواهد:</b> ${s.ev}</p><p><b>آیا با غذا کافی است؟</b> ${s.d}</p><p><b>ایمنی:</b> ${s.s}</p><p><b>مشورت/آزمایش:</b> ${s.p}</p><p><b>مقدار کاربردی:</b> ${s.dose}</p></article>`).join("")};
+/* ===== پیشرفت ===== */
+function weeklyReview(){const ws=weeklyAvg();const out=[];const ad=avg(S.daily.slice(-7).filter(d=>d.nutr!==undefined&&d.nutr!=="").map(d=>+d.nutr));
+if(ws.length<3||ws.slice(-2).some(x=>x.n<3))return "برای پیشنهاد تغییر کالری، حداقل ۳ هفته داده و در هر هفته حداقل ۳ توزین صبحگاهی لازم است. فعلاً هیچ تغییری پیشنهاد نمی‌شود.";
+const d1=ws[ws.length-1].y-ws[ws.length-2].y,d2=ws[ws.length-2].y-ws[ws.length-3].y;
+if(ad!==null&&ad<70)return "پایبندی تغذیه اخیر پایین است؛ قبل از تغییر کالری، ابتدا رعایت برنامه و دقت اندازه‌گیری را درست کن.";
+const n=nutri();
+if(d1>=-0.05&&d2>=-0.05)return `میانگین وزن دو هفته ثابت یا رو به افزایش بود. اگر هدف کاهش چربی است، پایبندی خوب است و عملکرد باشگاه افت نکرده، می‌توان حدود ۱۰۰–۱۵۰ کیلوکالری (عمدتاً کربوهیدرات) کم کرد؛ هدف جدید ≈ ${fa(n.k-100,0)}. توجه: کراتین یا افزایش غذا ممکن است آب بیشتری نگه دارد.`;
+if(d1<-0.7&&d2<-0.7)return `کاهش وزن سریع‌تر از معمول است. اگر گرسنگی، خستگی یا افت عملکرد داری، حدود ۱۵۰–۲۰۰ کیلوکالری اضافه کن؛ هدف ≈ ${fa(n.k+150,0)}.`;
+return "روند وزن در محدودهٔ آرام و منطقی است. تغییر در کالری لازم نیست.";}
+R.prog=function(){const t=today();const cur=S.daily.find(d=>d.date===t)||{};
+$("#t-prog").innerHTML=`<h2>پیشرفت من</h2>
+<div class="card"><h3>ثبت روزانه</h3><div class="note">وزن را صبح، پس از دستشویی و قبل از غذا اندازه بگیر. یک عدد را مبنای تصمیم قرار نده؛ میانگین چند روز مهم است.</div>
+<form id="dailyF" class="form"><div><label>تاریخ</label><input type="date" name="date" value="${t}" required></div>
+<div><label>وزن صبحگاهی (کیلو)</label><input name="weight" inputmode="decimal" value="${esc(cur.weight??"")}"></div>
+<div><label>دور کمر (سانتی‌متر، اختیاری)</label><input name="waist" inputmode="decimal" value="${esc(cur.waist??"")}"></div>
+<div><label>خواب دیشب (ساعت)</label><input name="sleep" inputmode="decimal" value="${esc(cur.sleep??"")}"></div>
+<div><label>پایبندی تغذیه: <output id="nO">${esc(cur.nutr??80)}</output>٪</label><input type="range" name="nutr" min="0" max="100" step="10" value="${esc(cur.nutr??80)}" oninput="nO.value=this.value"></div>
+<div><label>انرژی (۱–۵)</label><select name="energy">${[1,2,3,4,5].map(i=>`<option ${cur.energy==i?"selected":""}>${i}</option>`).join("")}</select></div>
+<div><label>گرسنگی (۱–۵)</label><select name="hunger">${[1,2,3,4,5].map(i=>`<option ${cur.hunger==i?"selected":""}>${i}</option>`).join("")}</select></div>
+<div class="full"><button class="btn">ذخیره</button></div></form></div>
+<div class="card"><h3>بازبینی هفتگی</h3><p>${weeklyReview()}</p><p class="mut">قاعده: تغییر کالری فقط با روند چند هفته‌ای، پس از بررسی پایبندی و کیفیت اندازه‌گیری. اختلاف روزانه وزن معمولاً آب و گلیکوژن است.</p></div>
+<div class="card"><h3>ثبت‌های اخیر</h3>${S.daily.length?`<table><tr><th>تاریخ</th><th>وزن</th><th>کمر</th><th>خواب</th><th>تغذیه</th><th></th></tr>${[...S.daily].sort((a,b)=>a.date<b.date?1:-1).slice(0,30).map(d=>`<tr><td>${fdate(d.date)}</td><td>${fa(d.weight)}</td><td>${fa(d.waist)}</td><td>${fa(d.sleep)}</td><td>${d.nutr!==undefined?fa(+d.nutr,0)+"٪":"—"}</td><td><button class="btn sec" data-del="${d.date}" aria-label="حذف">حذف</button></td></tr>`).join("")}</table>`:`<div class="mut">هنوز چیزی ثبت نشده است.</div>`}</div>`;
+$("#dailyF").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),o={date:f.get("date"),weight:num(f.get("weight")),waist:num(f.get("waist")),sleep:num(f.get("sleep")),nutr:f.get("nutr"),energy:f.get("energy"),hunger:f.get("hunger")};
+if(o.weight!==null&&(o.weight<30||o.weight>250)){alert("وزن واردشده معتبر نیست.");return}if(o.sleep!==null&&(o.sleep<0||o.sleep>16)){alert("ساعت خواب معتبر نیست.");return}if(o.waist!==null&&(o.waist<40||o.waist>200)){alert("دور کمر معتبر نیست.");return}
+S.daily=S.daily.filter(d=>d.date!==o.date);S.daily.push(o);save();R.prog()};
+$$("[data-del]").forEach(b=>b.onclick=()=>{S.daily=S.daily.filter(d=>d.date!==b.dataset.del);save();R.prog()})};
+/* ===== ارزیابی ماهانه ===== */
+R.month=function(){const last=S.reviews[S.reviews.length-1];
+$("#t-month").innerHTML=`<h2>ارزیابی ماهانه</h2><div class="note">عکس‌ها فقط در مرورگر تو نمایش داده می‌شوند و هیچ‌جا آپلود یا ذخیره نمی‌شوند. عکس نمی‌تواند درصد چربی یا مقدار عضله را دقیق نشان دهد. نور، فاصله، زاویه و ژست را ثابت نگه دار.</div>
+<div class="card"><form id="mF" class="form"><div><label>وزن (کیلو)</label><input name="weight" inputmode="decimal"></div><div><label>دور کمر (سانتی‌متر)</label><input name="waist" inputmode="decimal"></div><div><label>دور بازو (اختیاری)</label><input name="arm" inputmode="decimal"></div><div><label>دور سینه (اختیاری)</label><input name="chest" inputmode="decimal"></div>
+<div><label>عملکرد تمرین (۱ ضعیف ← ۵ عالی)</label><select name="perf">${[1,2,3,4,5].map(i=>`<option ${i==3?"selected":""}>${i}</option>`).join("")}</select></div>
+<div><label>پایبندی تمرین (٪)</label><input name="tAdh" type="number" min="0" max="100" value="${S.start?Math.min(100,Math.round(doneCount()/(4*Math.min(12,Math.max(1,Math.floor((dayNum(today())-dayNum(S.start))/7)+1)))*100)):""}"></div>
+<div><label>پایبندی تغذیه (٪)</label><input name="nAdh" type="number" min="0" max="100"></div><div><label>کیفیت خواب (۱–۵)</label><select name="sleepQ">${[1,2,3,4,5].map(i=>`<option ${i==3?"selected":""}>${i}</option>`).join("")}</select></div>
+<div><label>انرژی و ریکاوری (۱–۵)</label><select name="rec">${[1,2,3,4,5].map(i=>`<option ${i==3?"selected":""}>${i}</option>`).join("")}</select></div>
+<div class="full"><label>ناراحتی یا درد مرتبط با تمرین</label><textarea name="pain" rows="2"></textarea></div>
+<div class="full"><button class="btn">تولید خلاصه و ذخیره</button></div></form></div>
+<div id="mSum"></div>
+<div class="card"><h3>مقایسهٔ عکس‌ها (فقط محلی)</h3><div class="photos"><div><label>قبل</label><input type="file" accept="image/*" id="p1"><img id="i1" alt="" hidden></div><div><label>بعد</label><input type="file" accept="image/*" id="p2"><img id="i2" alt="" hidden></div></div></div>
+${S.reviews.length?`<div class="card"><h3>ارزیابی‌های قبلی</h3>${S.reviews.map(r=>`<p>${fdate(r.date)} · وزن ${fa(r.weight)} · کمر ${fa(r.waist)}</p>`).join("")}</div>`:""}`;
+["1","2"].forEach(i=>$("#p"+i).onchange=e=>{const f=e.target.files[0];if(!f)return;const img=$("#i"+i);img.src=URL.createObjectURL(f);img.hidden=false;img.alt="عکس پیشرفت "+i});
+$("#mF").onsubmit=e=>{e.preventDefault();const f=Object.fromEntries(new FormData(e.target));const r={date:today()};["weight","waist","arm","chest"].forEach(k=>r[k]=num(f[k]));["perf","tAdh","nAdh","sleepQ","rec"].forEach(k=>r[k]=num(f[k]));r.pain=f.pain;
+const prev=S.reviews[S.reviews.length-1];S.reviews.push(r);save();$("#mSum").innerHTML=summary(r,prev)}};
+function summary(r,p){const imp=[],same=[],att=[];const cmp=(k,l,lowerBetter)=>{if(r[k]===null||!p||p[k]===null||p[k]===undefined)return;const d=r[k]-p[k];if(Math.abs(d)<0.3)same.push(`${l} تقریباً ثابت (${fa(r[k])})`);else if((d<0)===!!lowerBetter)imp.push(`${l}: ${fa(p[k])} ← ${fa(r[k])}`);else att.push(`${l}: ${fa(p[k])} ← ${fa(r[k])} (بررسی کن؛ ممکن است عادی یا مرتبط با آب/عضله باشد)`)};
+cmp("waist","دور کمر",true);cmp("arm","دور بازو",false);cmp("chest","دور سینه",false);cmp("weight","وزن",true);
+if(!p)same.push("ارزیابی قبلی برای مقایسه وجود ندارد؛ این ارزیابی خط پایه است.");
+if(r.perf>=4)imp.push("عملکرد تمرین خوب گزارش شد");if(r.perf<=2)att.push("عملکرد تمرین ضعیف است");
+if(r.tAdh!==null&&r.tAdh<75)att.push("پایبندی تمرین کمتر از ۷۵٪");if(r.nAdh!==null&&r.nAdh<70)att.push("پایبندی تغذیه پایین است");if(r.sleepQ<=2||r.rec<=2)att.push("خواب/ریکاوری ضعیف");if(r.pain&&r.pain.trim())att.push("ناراحتی گزارش‌شده: "+esc(r.pain));
+const L=a=>a.length?`<ul>${a.map(x=>`<li>${x}</li>`).join("")}</ul>`:"<p class='mut'>موردی ثبت نشد.</p>";
+const tr=(r.perf<=2||r.rec<=2||(r.pain&&r.pain.trim()))?"حجم را افزایش نده؛ در صورت لزوم یک هفتهٔ سبک بگذار و درد را ارزیابی کن.":"اگر تکنیک و ریکاوری خوب است، پیشرفت وزنه یا تکرار را ادامه بده؛ ست اضافه فقط برای ۱–۲ تمرین اولویت‌دار.";
+const nu=(r.nAdh!==null&&r.nAdh<70)?"قبل از هر تغییر، پایبندی و دقت اندازه‌گیری را اصلاح کن.":"کالری را فقط با روند میانگین چند هفته تغییر بده؛ از «پیشرفت من» استفاده کن.";
+return `<div class="card"><h3>خلاصهٔ ارزیابی</h3><h3>بهبودها</h3>${L(imp)}<h3>بدون تغییر</h3>${L(same)}<h3>نیاز به توجه</h3>${L(att)}<h3>تمرین</h3><p>${tr}</p><h3>تغذیه</h3><p>${nu}</p><h3>پرسش‌ها پیش از فاز بعد</h3><ul><li>آیا درد یا ناراحتی تکرارشونده داری؟</li><li>وزنه‌های جدید ثبت شده‌اند؟</li><li>خواب به ۷ ساعت یا بیشتر نزدیک شده است؟</li></ul><div class="mut">این خلاصه تشخیص پزشکی یا اندازه‌گیری دقیق عضله نیست.</div></div>`}
+/* ===== منابع و داده‌ها ===== */
+const REFS=[
+["ISSN","موضع‌نامهٔ پروتئین و ورزش (۲۰۱۷)","https://doi.org/10.1186/s12970-017-0177-8","نیاز پروتئین ورزشکاران (حدود ۱٫۴–۲ گرم/کیلو)."],
+["ISSN","موضع‌نامهٔ کراتین (۲۰۱۷)","https://doi.org/10.1186/s12970-017-0173-z","اثر و ایمنی کراتین."],
+["ISSN","موضع‌نامهٔ کافئین (۲۰۲۱)","https://doi.org/10.1186/s12970-020-00383-4","اثر کافئین بر عملکرد و ملاحظات."],
+["ACSM","Progression Models in Resistance Training for Healthy Adults (۲۰۰۹)","https://doi.org/10.1249/MSS.0b013e3181915670","اصول پیشرفت تدریجی در تمرین مقاومتی."],
+["Schoenfeld و همکاران","Dose-response relationship between weekly resistance training volume and muscle mass (۲۰۱۷)","https://doi.org/10.1080/02640414.2016.1210197","رابطهٔ حجم هفتگی و رشد عضله."],
+["NIH ODS","Vitamin D Fact Sheet for Health Professionals","https://ods.od.nih.gov/factsheets/VitaminD-HealthProfessional/","نیاز و حد مجاز ویتامین D."],
+["NIH ODS","Vitamin B12 Fact Sheet","https://ods.od.nih.gov/factsheets/VitaminB12-HealthProfessional/","گروه‌های در معرض کمبود B12."],
+["NIH ODS","Iron Fact Sheet","https://ods.od.nih.gov/factsheets/Iron-HealthProfessional/","خطر مصرف خودسرانهٔ آهن."],
+["NIH ODS","Omega-3 Fatty Acids Fact Sheet","https://ods.od.nih.gov/factsheets/Omega3FattyAcids-HealthProfessional/","منابع غذایی و ایمنی امگا-۳."],
+["Watson و همکاران (AASM/SRS)","Recommended Amount of Sleep for a Healthy Adult (۲۰۱۵)","https://doi.org/10.5665/sleep.4716","حداقل ۷ ساعت خواب بزرگسالان."]];
+const QS=[["weight","وزن فعلی (کیلو)","number"],["waist","دور کمر (سانتی‌متر، اختیاری)","number"],["bench","وزنهٔ پرس سینه (کیلو)","number"],["press","وزنهٔ پرس سرشانه (کیلو)","number"],["sleepH","مدت خواب (ساعت)","number"],["bed","ساعت خواب معمول","time"]];
+R.res=function(){const q=S.q;
+$("#t-res").innerHTML=`<h2>منابع و آموزش</h2>
+<div class="card"><h3>پرسش‌نامهٔ اولیه</h3><p class="mut">همه‌چیز در همین مرورگر ذخیره می‌شود. هیچ فیلد اجباری نیست. اطلاعات پزشکی اختیاری است.</p>
+<form id="qF" class="form">
+${QS.map(([k,l,t])=>`<div><label>${l}</label><input name="${k}" type="${t}" step="any" value="${esc(q[k]??"")}"></div>`).join("")}
+<div><label>پرس سینه: آیا شامل وزن هالتر است؟</label><select name="benchBar"><option value="">نمی‌دانم</option><option value="yes" ${q.benchBar==="yes"?"selected":""}>بله، کل وزن با هالتر</option><option value="no" ${q.benchBar==="no"?"selected":""}>خیر، فقط صفحه‌ها</option></select></div>
+<div><label>پرس سرشانه با چه وسیله‌ای؟</label><select name="pressType"><option value="">نمی‌دانم</option>${["دستگاه","هالتر","دمبل"].map(x=>`<option ${q.pressType===x?"selected":""}>${x}</option>`).join("")}</select></div>
+<div><label>قدم روزانه (تقریبی)</label><select name="steps"><option value="">نامشخص</option><option value="low" ${q.steps==="low"?"selected":""}>کمتر از ۵ هزار</option><option value="mid" ${q.steps==="mid"?"selected":""}>۵ تا ۸ هزار</option><option value="high" ${q.steps==="high"?"selected":""}>بیش از ۸ هزار</option></select></div>
+<div><label>مدت تمرین</label><select name="dur">${["۴۵ دقیقه","۶۰ دقیقه","۷۵ دقیقه","۹۰ دقیقه"].map(x=>`<option ${q.dur===x?"selected":""}>${x}</option>`).join("")}</select></div>
+<div><label>کیفیت خواب (۱–۵): <output id="sqO">${esc(q.sleepQ??3)}</output></label><input type="range" name="sleepQ" min="1" max="5" value="${esc(q.sleepQ??3)}" oninput="sqO.value=this.value"></div>
+<div><label>سطح فعالیت روزانه</label><select name="act">${["کم (دانشجو، بیشتر نشسته)","متوسط","زیاد"].map(x=>`<option ${q.act===x?"selected":""}>${x}</option>`).join("")}</select></div>
+<div><label>بودجهٔ غذا</label><select name="budget">${["کم","متوسط","راحت"].map(x=>`<option ${q.budget===x?"selected":""}>${x}</option>`).join("")}</select></div>
+<div><label>زمان آشپزی</label><select name="cook">${["کمتر از ۳۰ دقیقه","۳۰ تا ۶۰ دقیقه","بیش از ۶۰ دقیقه"].map(x=>`<option ${q.cook===x?"selected":""}>${x}</option>`).join("")}</select></div>
+<div><label>آیا می‌توانی غذا را وزن کنی؟</label><select name="scale"><option>بله</option><option ${q.scale==="نه"?"selected":""}>نه</option><option ${q.scale==="گاهی"?"selected":""}>گاهی</option></select></div>
+<div class="full"><label>روزهای ترجیحی تمرین</label>${WD.map((d,i)=>`<label class="chk"><input type="checkbox" name="days" value="${i}" ${(q.days||[]).includes(String(i))?"checked":""}>${d}</label>`).join("")}</div>
+<div class="full"><label>تجربه</label>${["اسکوات","ددلیفت","پرس سینه","بارفیکس"].map(x=>`<label class="chk"><input type="checkbox" name="known" value="${x}" ${(q.known||[]).includes(x)?"checked":""}>با ${x} آشنا هستم</label>`).join("")}</div>
+<div class="full"><label>تجهیزات در دسترس</label>${["هالتر","دمبل","نیمکت","کابل","دستگاه سرشانه","دستگاه سینه","لگ‌پرس","بارفیکس","تردمیل"].map(x=>`<label class="chk"><input type="checkbox" name="equip" value="${x}" ${(q.equip||["هالتر","دمبل","نیمکت","کابل","دستگاه سرشانه","دستگاه سینه","لگ‌پرس","بارفیکس","تردمیل"]).includes(x)?"checked":""}>${x}</label>`).join("")}</div>
+${[["limits","محدودیت‌های تکنیکی"],["meals","وعده‌های معمول روزانه"],["likes","غذاهای مورد علاقه"],["dislikes","غذاهای ناخوشایند"],["allergy","حساسیت یا عدم تحمل غذایی"],["meds","داروها یا بیماری‌های مرتبط (اختیاری)"],["injury","آسیب‌های گذشته یا فعلی"],["supps","مکمل‌های فعلی و دوز"],["pain","درد یا علامت نگران‌کننده هنگام ورزش"],["hist","سابقهٔ تمرین"]].map(([k,l])=>`<div class="full"><label>${l}</label><textarea name="${k}" rows="2">${esc(q[k]??"")}</textarea></div>`).join("")}
+<div class="full"><button class="btn">ذخیره و به‌روزرسانی برنامه</button></div></form></div>
+<div class="card"><h3>داده‌ها و حریم خصوصی</h3><p>اطلاعات فقط در localStorage مرورگر تو ذخیره می‌شود و به هیچ سروری ارسال نمی‌شود. اگر داده‌های مرورگر را پاک کنی یا دستگاه را عوض کنی، اطلاعات از بین می‌رود یا همگام نمی‌شود؛ پس پشتیبان بگیر.</p>
+<button class="btn" data-act="exp">دانلود پشتیبان JSON</button> <button class="btn sec" data-act="csv">خروجی CSV</button> <label class="btn sec" style="display:inline-block;margin:0">وارد کردن پشتیبان<input type="file" accept="application/json" id="imp" hidden></label> <button class="btn dng" data-act="reset">پاک‌سازی همه‌چیز</button></div>
+<div class="card"><h3>منابع علمی</h3><div class="note">این لینک‌ها از منابع شناخته‌شده انتخاب شده‌اند، ولی در زمان ساخت این برنامه یکی‌یکی باز و راستی‌آزمایی نشده‌اند. پیش از اتکا، آن‌ها را بررسی کن.</div><ul>${REFS.map(r=>`<li><b>${r[0]}</b>: <a href="${r[2]}" target="_blank" rel="noopener">${r[1]}</a><br><span class="mut">${r[3]}</span></li>`).join("")}</ul></div>
+<div class="card"><h3>منبع تصاویر</h3><p>تصاویر از مخزن <a href="${SRC}" target="_blank" rel="noopener">free-exercise-db</a> (مجموعهٔ عمومی تمرین‌ها) بارگذاری می‌شوند و با اینترنت لازم است. طرح‌های جایگزین، تصویر آموزشی ساده‌اند، نه ویدیوی استاندارد.</p></div>
+<div class="card"><h3>هشدارهای ایمنی</h3><ul><li>این برنامه تضمینی برای شکل بدن یا مقدار رشد عضله نمی‌دهد.</li><li>BMI معیار قطعی ترکیب بدن نیست و عکس هم درصد چربی را دقیق نشان نمی‌دهد.</li><li>درد تیز، سرگیجه یا علائم نگران‌کننده = توقف و مراجعه.</li><li>این برنامه جایگزین پزشک، متخصص تغذیه یا مربی حضوری نیست.</li><li>یادگیری اسکوات و ددلیفت را فقط با مربی و وزنهٔ سبک و تدریجی شروع کن.</li></ul></div>`;
+$("#qF").onsubmit=e=>{e.preventDefault();const f=new FormData(e.target),o={saved:true};for(const [k,v] of f.entries()){if(["days","known","equip"].includes(k))continue;o[k]=v}
+["days","known","equip"].forEach(k=>o[k]=f.getAll(k));
+["weight","waist","bench","press","sleepH"].forEach(k=>o[k]=o[k]===""?null:num(o[k]));
+if(o.weight!==null&&(o.weight<30||o.weight>250)){alert("وزن معتبر نیست");return}
+S.q=o;if(o.days.length===4){const idx=o.days.map(Number).sort((a,b)=>a-b);["A","B","C","D"].forEach((k,i)=>S.dayMap[k]=idx[i])}else if(o.days.length){alert("برای برنامهٔ ۴روزه دقیقاً ۴ روز انتخاب کن؛ روزهای پیش‌فرض حفظ شد.")}
+save();alert("ذخیره شد. برنامهٔ غذایی و تمرینی با اطلاعات جدید به‌روز شد.");R.res()};
+$("#imp").onchange=e=>{const f=e.target.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{try{const d=JSON.parse(rd.result);if(typeof d!=="object"||!d||!("sessions" in d||"daily" in d))throw 0;S=Object.assign(defState(),d);save();alert("پشتیبان وارد شد.");go("dash")}catch(x){alert("فایل پشتیبان معتبر نیست.")}};rd.readAsText(f)}};
+function dl(name,text,type){const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([text],{type}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),500)}
+document.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g){e.preventDefault();go(g.dataset.go);return}
+const a=e.target.closest("[data-act]");if(!a)return;const act=a.dataset.act;
+if(act==="startPlan"){S.start=today();save();R.dash()}
+if(act==="exp")dl("fitness-backup-"+today()+".json",JSON.stringify(S,null,1),"application/json");
+if(act==="csv"){let c="\ufeffنوع,تاریخ,مورد,مقدار1,مقدار2,مقدار3\n";S.daily.forEach(d=>c+=`روزانه,${d.date},وزن/کمر/خواب,${d.weight??""},${d.waist??""},${d.sleep??""}\n`);
+sessionList().forEach(s=>Object.entries(s.ex||{}).forEach(([id,x])=>(x.sets||[]).forEach((t,i)=>c+=`تمرین,${s.date},${(E[id]||{}).en||id} ست ${i+1},${(t&&t.w)||""},${(t&&t.r)||""},${(t&&t.i)||""}\n`)));dl("fitness-"+today()+".csv",c,"text/csv")}
+if(act==="reset"&&confirm("همهٔ داده‌ها پاک شود؟ این کار برگشت‌پذیر نیست. پیشنهاد: ابتدا پشتیبان بگیر.")){localStorage.removeItem(KEY);S=defState();go("dash")}});
+go(localStorage.getItem(KEY+"_tab")&&R[localStorage.getItem(KEY+"_tab")]?localStorage.getItem(KEY+"_tab"):"dash");
+</script>
+</body>
+</html>
